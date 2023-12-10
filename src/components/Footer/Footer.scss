@@ -1,0 +1,250 @@
+@use '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.footer {
+    width: 100%;
+    background-color: $white;
+    padding-bottom: 40px;
+    @include mixins.flex(row, center, center);
+
+    @media (max-width: 1200px) {
+        padding-bottom: 16px;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .footer-container {
+        width: calc(100% - 80px - 128px);
+        height: 100%;
+        max-width: 1712px;
+        padding: 64px 64px;
+        border-radius: 40px;
+        border: 1px solid $black;
+        @include mixins.flex(column, flex-start, center);
+
+        @media (max-width: 1440px) {
+            width: calc(100% - 80px - 64px);
+            padding: 48px 32px;
+        }
+
+        @media (max-width: 1200px) {
+            width: calc(100% - 32px - 64px);
+        }
+
+        @media (max-width: 600px) {
+            width: calc(100% - 32px - 48px);
+            padding: 24px 24px;
+            border-radius: 24px;
+        }
+
+        .footer-main {
+            width: 100%;
+            margin-bottom: 32px;
+            @include mixins.flex(row, space-between, flex-start);
+
+            @media (max-width: 1200px) {
+                gap: 80px;
+            }
+
+            @media (max-width: 1120px) {
+                gap: 40px;
+                @include mixins.flex(column, flex-start, flex-start);
+            }
+
+            @media (max-width: 600px) {
+                gap: 48px;
+            }
+
+            .footer-title {
+                width: 554px;
+                text-transform: uppercase;
+                @include mixins.font(Inter, 100px, normal, 400, 90%);
+
+                @media (max-width: 800px) {
+                    width: 390px;
+                    @include mixins.font(Inter, 70px, normal, 400, 90%);
+                }
+
+                @media (max-width: 600px) {
+                    width: 100%;
+                    max-width: 295px;
+                    @include mixins.font(Inter, 50px, normal, 400, 90%);
+                }
+            }
+
+            .footer-info {
+                @include mixins.flex(column, flex-start, flex-start);
+
+                a {
+                    margin-bottom: 24px;
+                }
+
+                a:nth-child(4) {
+                    margin-bottom: 64px;
+
+                    @media (max-width: 600px) {
+                        margin-bottom: 48px;
+                    }
+                }
+
+                .footer-info-label {
+                    margin-bottom: 8px;
+                    opacity: 0.5;
+                    text-transform: uppercase;
+                    @include mixins.font(Inter, 12px, normal, 400, 110%);
+                }
+
+                .footer-info-link {
+                    height: 26px;
+                    margin-bottom: 24px;
+                    position: relative;
+                    text-transform: uppercase;
+                    cursor: pointer;
+                    @include mixins.font(Inter, 24px, normal, 400, 100%);
+
+                    @media (max-width: 600px) {
+                        @include mixins.font(Inter, 18px, normal, 400, 100%);
+                    }
+
+                    &::before {
+                        content: '';
+                        width: 0px;
+                        height: 1.5px;
+                        background-color: $black;
+                        position: absolute;
+                        bottom: 0px;
+                        right: 0px;
+                        transition: all 0.3s ease-in-out;
+                    }
+
+                    &.instagram {
+                        margin-left: 30px;
+                        margin-bottom: 64px;
+
+                        &::after {
+                            content: url('../../assets/icon-instagram.svg');
+                            position: absolute;
+                            left: -30px;
+                            top: 1px;
+                        }
+                    }
+                }
+
+                .footer-info-link:hover::before {
+                    right: unset;
+                    left: 0px;
+                    width: 100%;
+                }
+
+                .footer-description {
+                    gap: 32px;
+                    @include mixins.flex(row, flex-start, flex-start);
+
+                    @media (max-width: 1400px) {
+                        width: 100%;
+                        gap: 24px;
+                        @include mixins.flex(column, flex-start, flex-start);
+                    }
+
+                    @media (max-width: 1120px) {
+                        width: 100%;
+                        gap: 24px;
+                        @include mixins.flex(row, space-between, flex-start);
+                    }
+
+                    @media (max-width: 600px) {
+                        @include mixins.flex(column, flex-start, flex-start);
+                    }
+
+                    .footer-person {
+                        @include mixins.flex(row, flex-start, flex-start);
+
+                        @media (max-width: 600px) {
+                            @include mixins.flex(row, flex-start, center);
+                        }
+
+
+                        div {
+                            width: 64px;
+                            height: 76px;
+                            min-width: 64px;
+                            margin-right: 8px;
+                            background-image: url('../../assets/photo-Kozubskyi.webp');
+                            background-repeat: no-repeat;
+                            background-size: auto 150%;
+                            background-position: 58% 25%;
+
+                            @media (max-width: 600px) {
+                                margin-right: 16px;
+                            }
+                        }
+
+                        h3 {
+                            width: 214px;
+                            margin: 0;
+                            text-transform: uppercase;
+                            @include mixins.font(Inter, 38px, normal, 400, 100%);
+
+                            @media (max-width: 600px) {
+                                width: 100%;
+                                max-width: 158px;
+                                @include mixins.font(Inter, 28px, normal, 400, 100%);
+                            }
+                        }
+                    }
+
+                    p {
+                        width: 280px;
+                        margin: 0;
+                        opacity: 0.5;
+                        @include mixins.font(Inter, 14px, normal, 400, 150%);
+
+                        @media (max-width: 1200px) {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+
+        .footer-bottom {
+            width: 100%;
+            text-transform: uppercase;
+            opacity: 0.5;
+            @include mixins.flex(row, space-between, flex-start);
+            @include mixins.font(Inter, 12px, normal, 400, 110%);
+
+            @media (max-width: 600px) {
+                gap: 16px;
+                @include mixins.flex(column, flex-start, flex-start);
+            }
+
+            .footer-dev-link {
+                height: 15px;
+                position: relative;
+                cursor: pointer;
+
+                &::before {
+                    content: '';
+                    width: 0px;
+                    height: 1px;
+                    background-color: $black;
+                    position: absolute;
+                    bottom: 0px;
+                    right: 0px;
+                    transition: all 0.3s ease-in-out;
+                }
+            }
+
+            .footer-dev-link:hover::before {
+                right: unset;
+                left: 0px;
+                width: 100%;
+            }
+        }
+    }
+}
+

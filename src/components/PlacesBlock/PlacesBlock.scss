@@ -1,0 +1,64 @@
+@use '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.places-block {
+    width: 100%;
+    height: 750px;
+    background-color: $white;
+    padding-bottom: 248px;
+    @include mixins.flex(row, center, center);
+
+    @media (max-width: 700px) {
+        height: auto;
+        padding-bottom: 128px;
+    }
+
+    .places-block-container {
+        width: calc(100% - 80px);
+        height: 100%;
+        max-width: 1360px;
+        position: relative;
+        @include mixins.flex(column, flex-end, center);
+
+        @media (max-width: 1200px) {
+            width: calc(100% - 32px);
+        }
+
+        @media (max-width: 700px) {
+            gap: 40px;
+            @include mixins.flex(column, flex-start, center);
+        }
+
+        h2 {
+            width: 70%;
+            margin: 0;
+            position: absolute;
+            z-index: 0;
+            top: -420px;
+            text-align: center;
+            text-transform: uppercase;
+            @include mixins.font(Inter, 80px, normal, 400, 90%);
+
+            @media (max-width: 1100px) {
+                @include mixins.font(Inter, 55px, normal, 400, 90%);
+            }
+
+            @media (max-width: 700px) {
+                width: 100%;
+                position: static;
+                @include mixins.font(Inter, 36px, normal, 400, 90%);
+            }
+        }
+
+        .places-block-info-box {
+            width: 70%;
+            gap: 24px;
+            flex-wrap: wrap;
+            @include mixins.flex(row, center, center);
+
+            @media (max-width: 1100px) {
+                width: 100%;
+            }
+        }
+    }
+}

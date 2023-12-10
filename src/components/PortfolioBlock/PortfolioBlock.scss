@@ -1,0 +1,60 @@
+@use '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.portfolio-block {
+    width: 100%;
+    height: 1900px;
+    background-color: $white;
+    @include mixins.flex(row, center, center);
+
+    @media (max-width: 1100px) {
+        height: 1300px;
+        margin-bottom: 248px;
+    }
+
+    @media (max-width: 700px) {
+        height: auto;
+        margin-bottom: 96px;
+    }
+
+    .portfolio-block-container {
+        width: calc(100% - 80px);
+        height: 100%;
+        max-width: 1360px;
+        position: relative;
+        @include mixins.flex(column, flex-start, center);
+
+        @media (max-width: 1200px) {
+            width: calc(100% - 32px);
+        }
+
+        h2 {
+            width: 755px;
+            height: 120px;
+            position: sticky;
+            transform: translate(0%, -50%);
+            margin: 0;
+            text-transform: uppercase;
+            @include mixins.font(Inter, 135px, normal, 400, 90%);
+
+            @media (max-width: 1100px) {
+                width: 450px;
+                height: 73px;
+                @include mixins.font(Inter, 80px, normal, 400, 90%);
+            }
+
+            @media (max-width: 700px) {
+                transform: translate(0%, 0%);
+                margin: 91px 0 48px 0;
+                top: 91px;
+                left: 0;
+            }
+
+            @media (max-width: 600px) {
+                width: 224px;
+                height: 35px;
+                @include mixins.font(Inter, 40px, normal, 400, 90%);
+            }
+        }
+    }
+}

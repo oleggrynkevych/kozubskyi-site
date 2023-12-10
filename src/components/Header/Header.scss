@@ -1,0 +1,115 @@
+@use '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.header {
+    width: calc(100% - 80px);
+    height: 61px;
+    padding: 0px 40px 0 40px;
+    background-color: $transparent;
+    mix-blend-mode: normal;
+    position: fixed;
+    top: -1px;
+    z-index: 1000;
+    transition: top 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    @include mixins.flex(row, center, center);
+
+    @media (max-width: 1200px) {
+        width: calc(100% - 32px);
+        padding: 0px 16px 0 16px;
+    }
+
+    @media (max-width: 800px) {
+        height: 54px;
+    }
+
+    &.hide {
+        top: -100%;
+    }
+
+    &.mixBlendMode {
+        mix-blend-mode: difference;
+    }
+
+    &.open {
+        background-color: $white;
+        mix-blend-mode: normal;
+    }
+
+    .header-container {
+        width: 100%;
+        @include mixins.flex(row, space-between, center);
+
+        .header-logo {
+            color: $white;
+
+            &.open {
+                color: $black;
+            }
+        }
+
+        .header-navigation {
+            background-color: $transparent;
+
+            &.open {
+                top: 54px;
+            }
+
+            @media (max-width: 800px) {
+                width: 100%;
+                height: 100vh;
+                position: absolute;
+                top: -100vh;
+                left: 0;
+                z-index: 1000;
+                background-color: $white;
+                transition: top 0.4s ease-in-out;
+                @include mixins.flex(column, flex-start, center);
+            }
+
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                gap: 16px;
+                @include mixins.flex(row, center, center);
+
+                a {
+                    @media (max-width: 800px) {
+                        width: 100%;
+                    }
+                }
+
+                @media (max-width: 800px) {
+                    width: calc(100% - 32px);
+                    margin-top: 18px;
+                    gap: 0px;
+                    @include mixins.flex(column, flex-start, flex-start);
+                }
+            }
+        }
+
+        .open-icon{
+            display: none;
+    
+            @media (max-width: 800px) {
+                display: block;
+            }
+        }
+    
+        .close-icon{
+            display: none;
+        }
+    
+        .open-icon {
+            &.open {
+                display: none;
+            }
+        }
+    
+        .close-icon {
+            &.open {
+                display: block;
+            }
+        }
+    }
+}

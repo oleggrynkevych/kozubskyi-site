@@ -1,0 +1,106 @@
+@use '../../../styles/mixins.scss';
+@import '../../../styles/variables.scss';
+
+.price-item {
+    width: 100%;
+    height: auto;
+    padding: 8px 24px 40px 24px;
+    border-radius: 40px;
+    border: 1px solid $black;
+    @include mixins.flex(column, flex-start, flex-start);
+
+    @media (max-width: 1300px) {
+        width: calc(100% - 48px);
+        max-width: 392px;
+    }
+
+    @media (max-width: 600px) {
+        width: calc(100% - 32px);
+        padding: 8px 16px 24px 16px;
+        border-radius: 24px;
+    }
+
+    .price-item-services {
+        width: 100%;
+        @include mixins.flex(column, flex-start, center);
+
+        &.not-available {
+            margin-bottom: 40px;
+
+            @media (max-width: 600px) {
+                margin-bottom: 24px;
+            }
+        }
+
+        .price-item-services-box {
+            width: 100%;
+            height: 72px;
+            position: relative;
+            border-bottom: 1px solid $line-color;
+            @include mixins.flex(row, flex-start, center);
+
+            @media (max-width: 600px) {
+                height: 62px;
+            }
+
+            &.not-available {
+                opacity: 0.2;
+                border-bottom: 1px solid $black;
+            }
+
+            .price-item-services-text {
+                width: auto;
+                height: 40px;
+                padding: 0 20px;
+                border-radius: 10000px;
+                border: 1px solid $black;
+                text-transform: uppercase;
+                @include mixins.flex(row, center, center);
+                @include mixins.font(Inter, 16px, normal, 400, 100%);
+
+                @media (max-width: 600px) {
+                    height: 38px;
+                    padding: 0 16px;
+                    @include mixins.font(Inter, 14px, normal, 400, 100%);
+                }
+            }
+
+            .price-item-services-number {
+                min-width: 18px;
+                min-height: 44px;
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                color: $white;
+                background-color: $black;
+                border-radius: 1000px;
+                padding: 0 13px;
+                @include mixins.flex(row, center, center);
+                @include mixins.font(Inter, 16px, normal, 400, 100%);
+
+                @media (max-width: 600px) {
+                    @include mixins.font(Inter, 14px, normal, 400, 100%);
+                }
+            }
+        }
+    }
+
+    .price-item-price-block {
+        width: 100%;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+        @include mixins.flex(row, space-between, center);
+        @include mixins.font(Inter, 38px, normal, 400, 100%);
+
+        @media (max-width: 600px) {
+            margin-bottom: 8px;
+            @include mixins.font(Inter, 28px, normal, 400, 100%);
+        }
+    }
+
+    .price-item-info-text {
+        text-transform: uppercase;
+        @include mixins.font(Inter, 16px, normal, 400, 100%);
+    }
+}

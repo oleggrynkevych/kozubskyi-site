@@ -1,0 +1,224 @@
+@use '../../../styles/mixins.scss';
+@import '../../../styles/variables.scss';
+
+
+.portfolio-item {
+    width: 555px;
+    height: 353px;
+    gap: 16px;
+    position: absolute;
+    transition: transform 0.7s ease-out;
+    z-index: 2;
+    @include mixins.flex(column, flex-start, flex-start);
+
+    @media (max-width: 1100px) {
+        width: 370px;
+        height: 236px;
+    }
+
+    @media (max-width: 700px) {
+        position: static;
+        margin-bottom: 32px;
+    }
+
+    @media (max-width: 500px) {
+        width: 100%;
+        max-width: 400px;
+        height: 216px;
+        gap: 8px;
+    }
+
+    .portfolio-item-video-container {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        img {
+            position: absolute;
+            top: 30px;
+            right: 20px;
+
+            @media (min-width: 700px) {
+                display: none;
+            }
+        }
+    }
+    
+    .portfolio-item-container {
+        width: 100%;
+        height: 321px;
+        position: relative;
+        overflow: hidden;
+
+        @media (max-width: 1100px) {
+            height: 204px;
+        }
+
+        @media (max-width: 500px) {
+            height: 192px;
+        }
+
+        .portfolio-item-photo {
+            width: 100%;
+            height: 321px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+
+            @media (max-width: 1100px) {
+                height: 204px;
+            }
+
+            @media (max-width: 500px) {
+                height: 192px;
+            }
+        }
+
+        .portfolio-item-button-container {
+            width: 100%;
+            height: 321px;
+            background-color: $background;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            transition: all 0.4s ease-in-out;
+            @include mixins.flex(row, center, center);
+
+            @media (max-width: 1100px) {
+                height: 204px;
+            }
+
+            @media (max-width: 500px) {
+                height: 192px;
+                opacity: 1;
+                background-color: $transparent;
+            }
+
+            .portfolio-item-button {
+                width: 90px;
+                height: 90px;
+                color: $white;
+                border-radius: 10000px;
+                border: 1px solid $white;
+                position: relative;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+                @include mixins.flex(row, center, center);
+
+                @media (max-width: 500px) {
+                    width: 70px;
+                    height: 70px;
+                }
+
+                &::before {
+                    content: '';
+                    width: 100%;
+                    height: 100%;
+                    background-color: $white;
+                    border-radius: 10000px;
+                    position: absolute;
+                    transform: scale(0);
+                    transition: all 0.3s ease-in-out;
+                    top: 0px;
+                    left: 0px;
+                }
+
+                svg {
+                    position: relative;
+                    z-index: 2;
+                }
+            }
+
+            .portfolio-item-button:hover {
+                color: $black;
+            }
+
+            .portfolio-item-button:hover::before {
+                transform: scale(1);
+            }
+        }
+    }
+
+    .portfolio-item-container:hover .portfolio-item-button-container {
+        opacity: 1;
+    }
+
+    .portfolio-item-text {
+        text-transform: uppercase;
+        @include mixins.font(Inter, 16px, normal, 400, 100%);
+    }
+}
+
+
+// Portfolio Item Position
+
+.portfolio-item {
+    &.portfolio1 {
+        top: 400px;
+        left: 460px;
+
+        @media (max-width: 1100px) {
+            left: 260px;
+        }
+    }
+
+    &.portfolio2 {
+        top: 1200px;
+        left: 0px;
+
+        @media (max-width: 1100px) {
+            top: 900px
+        }
+    }
+
+    &.portfolio3 {
+        top: 1000px;
+        right: 0px;
+
+        @media (max-width: 1100px) {
+            top: 900px
+        }
+    }
+
+    &.portfolio4 {
+        top: 1500px;
+        right: 150px;
+
+        @media (max-width: 1100px) {
+            top: 1100px;
+            right: 100px;
+        }
+    }
+
+    &.portfolio5 {
+        top: 2100px;
+        left: 150px;
+
+        @media (max-width: 1100px) {
+            top: 1500px;
+            left: 215px;
+        }
+    }
+}
+
+
+// Video Styles
+
+.portfolio-item-video {
+    width: 100% !important;
+    height: 100% !important;
+
+    @media (min-width: 700px) {
+        transform: translateZ(0px);
+    }
+}
+
+.portfolio-item-video iframe {
+    width: 100%;
+    height: 100%;
+}

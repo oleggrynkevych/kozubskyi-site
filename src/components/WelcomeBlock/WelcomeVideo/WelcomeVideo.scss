@@ -1,0 +1,41 @@
+.welcome-video-container {
+    width: 500px;
+    height: 800px;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    z-index: -2;
+    visibility: hidden;
+
+    @media (max-width: 500px) {
+        width: 200px;
+        height: 300px;
+    }
+
+    .welcome-video-container-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        img {
+            display: none;
+            position: absolute;
+            right: 55px;
+            top: 10px;
+
+            @media (max-width: 850px) {
+                display: block;
+            }
+        }
+    }
+}
+
+.welcome-video {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.welcome-video iframe {
+    width: 100%;
+    height: 100%;
+}

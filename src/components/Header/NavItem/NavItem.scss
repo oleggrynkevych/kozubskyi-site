@@ -1,0 +1,49 @@
+@use '../../../styles/mixins.scss';
+@import '../../../styles/variables.scss';
+
+li {
+    height: 22px;
+    overflow: hidden;
+    position: relative;
+    color: $white;
+    cursor: pointer;
+    @include mixins.font(Inter, 16px, normal, 400, 120%);
+
+    @media (max-width: 800px) {
+        width: 100%;
+        height: 58px;
+        color: $black;
+        border-bottom: 1px solid $black;
+        text-transform: uppercase;
+        @include mixins.font(Inter, 24px, normal, 400, 110%);
+        @include mixins.flex(row, center, center);
+    }
+
+    @media (max-width: 450px) {
+        @include mixins.flex(row, flex-start, center);
+    }
+
+    &::before {
+        content: '';
+        width: 0px;
+        height: 1px;
+        background-color: $white;
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    span {
+        @media (max-width: 450px) {
+            margin-left: 16px;
+        }
+    }
+}
+
+li:hover::before {
+    right: unset;
+    left: 0px;
+    width: 100%;
+}
+

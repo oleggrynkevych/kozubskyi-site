@@ -1,0 +1,32 @@
+@use '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.loading-page {
+    background-color: $white;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    @include mixins.flex(row, center, center);
+
+    .loading-logo-container {
+        animation: logoAnimation 1.5s infinite;
+    }
+}
+
+@keyframes logoPageHide {
+    0% { opacity: 1; }
+    100% { 
+        opacity: 0;
+        pointer-events: none;
+        z-index: -2;
+    }
+}
+
+@keyframes logoAnimation {
+    0% { opacity: 1; }
+    50% { opacity: 0.2; }
+    100% { opacity: 1; }
+}

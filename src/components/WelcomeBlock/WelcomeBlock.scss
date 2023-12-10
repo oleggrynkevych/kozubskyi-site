@@ -1,0 +1,377 @@
+@use '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.welcome-block {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    @include mixins.flex(row, center, center);
+
+    .background-video {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+
+        div {
+            width: 100%;
+            height: 100%;
+            position: relative;
+
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                z-index: -1;
+            }
+        }
+        
+        
+    }
+
+    // Sound Buttons
+
+    .welcome-block-sound-on-button,
+    .welcome-block-sound-off-button {
+        height: 22px;
+        color: $white;
+        gap: 14px;
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+        left: 40px;
+        top: 94px;
+        z-index: 10;
+        transition: opacity 0.2s ease-in-out;
+        cursor: pointer;
+        @include mixins.font(Inter, 16px, normal, 400, 120%);
+        @include mixins.flex(row, flex-start, center);
+
+        @media (max-width: 500px) {
+            display: none;
+        }
+
+        .stroke-container {
+            height: 100%;
+            gap: 2px;
+            @include mixins.flex(row, flex-start, center);
+
+            span {
+                width: 2px;
+                height: 10%;
+                background-color: $white;
+            }
+        }
+
+        .welcome-block-sound-button-text {
+            overflow: hidden;
+            position: relative;
+
+            &::before {
+                content: '';
+                width: 0px;
+                height: 1.5px;
+                background-color: $white;
+                position: absolute;
+                bottom: 0px;
+                right: 0px;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+    }
+
+    .welcome-block-sound-on-button:hover .welcome-block-sound-button-text::before {
+        right: unset;
+        left: 0px;
+        width: 100%;
+    }
+
+
+    .welcome-block-sound-off-button:hover .welcome-block-sound-button-text::before {
+        right: unset;
+        left: 0px;
+        width: 100%;
+    }
+
+    .welcome-block-sound-on-button {
+
+        &.muted {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .stroke-container {
+            span {
+                animation: strokeAnimation 1.2s linear infinite;
+            }
+
+            span:nth-child(1) {
+                animation-delay: 0.3s;
+            }
+
+            span:nth-child(2) {
+                animation-delay: 0.6s;
+            }
+
+            span:nth-child(3) {
+                animation-delay: 0.9s;
+            }
+
+            span:nth-child(4) {
+                animation-delay: 0s;
+            }
+
+            span:nth-child(5) {
+                animation-delay: 0.3s;
+            }
+
+            span:nth-child(6) {
+                animation-delay: 0.6s;
+            }
+
+            span:nth-child(7) {
+                animation-delay: 0.9s;
+            }
+        }
+    }
+
+    .welcome-block-sound-off-button {
+        &.muted {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    }
+
+
+    .welcome-block-container {
+        width: calc(100% - 80px);
+        height: 100%;
+        max-width: 1920px;
+        position: relative;
+        @include mixins.flex(row, center, center);
+
+        @media (max-width: 1200px) {
+            width: calc(100% - 32px);
+        }
+
+        // Scroll Button
+
+        .welcome-block-scroll-button {
+            gap: 12px;
+            color: $white;
+            text-transform: uppercase;
+            position: absolute;
+            right: 0;
+            bottom: 58px;
+            cursor: pointer;
+            @include mixins.flex(row, center, center);
+            @include mixins.font(Inter, 24px, normal, 400, 100%);
+
+            @media (max-width: 1400px) {
+                bottom: 516px;
+            }
+
+            @media (max-width: 1200px) {
+                bottom: 315px;
+            }
+
+            @media (max-width: 500px) {
+                display: none;
+            }
+
+            span {
+                overflow: hidden;
+                position: relative;
+
+                &::before {
+                    content: '';
+                    width: 0px;
+                    height: 1.5px;
+                    background-color: $white;
+                    position: absolute;
+                    bottom: 0px;
+                    right: 0px;
+                    transition: all 0.3s ease-in-out;
+                }
+            }
+        }
+
+        .welcome-block-scroll-button:hover span::before {
+            right: unset;
+            left: 0px;
+            width: 100%;
+        }
+
+
+        // FullScreen Button
+
+        .welcome-block-fullscreen-button {
+            width: 230px;
+            height: 230px;
+            background-color: $transparent;
+            color: $white;
+            border-radius: 1000px;
+            border: 1px solid $white;
+            position: absolute;
+            right: 805px;
+            bottom: 154px;
+            z-index: 10;
+            cursor: pointer;
+            @include mixins.font(Inter, 16px, normal, 400, 100%);
+
+            @media (min-width: 1700px) {
+                bottom: 175px;
+                right: 950px;
+            }
+
+            @media (max-width: 1400px) {
+                right: unset;
+                left: 0;
+            }
+
+            @media (max-width: 1200px) {
+                width: 150px;
+                height: 150px;
+                bottom: 87px;
+            }
+
+            @media (max-width: 700px) {
+                bottom: 78px;
+            }
+
+            @media (max-width: 700px) {
+                bottom: unset;
+                left: unset;
+                right: 0;
+                top: 272px;
+            }
+
+            span {
+                display: block;
+            }
+        }
+
+
+        // Text
+
+        .welcome-block-main-text-1,
+        .welcome-block-main-text-2,
+        .welcome-block-main-text-3 {
+            color: $white;
+            position: absolute;
+            text-transform: uppercase;
+            @include mixins.font(Inter, 155px, normal, 400, 90%);
+
+            @media (min-width: 1700px) {
+                @include mixins.font(Inter, 180px, normal, 400, 90%);
+            }
+
+            @media (max-width: 1200px) {
+                @include mixins.font(Inter, 90px, normal, 400, 90%);
+            }
+
+            @media (max-width: 700px) {
+                @include mixins.font(Inter, 70px, normal, 400, 90%);
+            }
+
+            @media (max-width: 500px) {
+                @include mixins.font(Inter, 48px, normal, 400, 90%);
+            }
+        }
+
+        .welcome-block-main-text-1 {
+            left: -15px;
+            bottom: 351px;
+
+            @media (min-width: 1700px) {
+                bottom: 372px;
+            }
+
+            @media (max-width: 1200px) {
+                left: -8px;
+                bottom: 212px;
+            }
+
+            @media (max-width: 500px) {
+                bottom: unset;
+                top: 153px;
+            }
+        }
+
+        .welcome-block-main-text-2 {
+            right: -15px;
+            bottom: 198px;
+
+            @media (min-width: 1700px) {
+                bottom: 200px;
+            }
+
+            @media (max-width: 1200px) {
+                right: -8px;
+                bottom: 118px;
+            }
+
+            @media (max-width: 500px) {
+                bottom: unset;
+                top: 202px;
+            }
+        }
+
+        .welcome-block-main-text-3 {
+            left: -15px;
+            bottom: 45px;
+
+            @media (max-width: 1200px) {
+                left: -8px;
+                bottom: 32px;
+            }
+
+            @media (max-width: 500px) {
+                bottom: unset;
+                top: 251px;
+            }
+        }
+
+        .welcome-block-description-text {
+            width: 266px;
+            color: $white;
+            position: absolute;
+            left: 0;
+            bottom: 233px;
+            text-transform: uppercase;
+            @include mixins.font(Inter, 24px, normal, 400, 100%);
+
+            @media (min-width: 1700px) {
+                bottom: 252px;
+            }
+
+            @media (max-width: 1400px) {
+                bottom: 513px;
+            }
+
+            @media (max-width: 1200px) {
+                bottom: 317px;
+            }
+
+            @media (max-width: 500px) {
+                width: 162px;
+                bottom: unset;
+                top: 316px;
+                @include mixins.font(Inter, 18px, normal, 400, 100%);
+            }
+        }
+
+    }
+}
+
+
+// Sound Stroke Animation
+
+@keyframes strokeAnimation {
+    50% {
+        height: 100%;
+    }
+    100% {
+        height: 10%;
+    }
+}

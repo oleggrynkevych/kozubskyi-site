@@ -1,0 +1,144 @@
+@use '../../../styles/mixins.scss';
+@import '../../../styles/variables.scss';
+
+
+.place-item-wrapper  {
+    position: relative;
+    width: auto;
+    height: auto;
+    border-radius: 287px;
+
+    .place-item {
+        width: auto;
+        height: 102px;
+        padding: 0 40px;
+        border-radius: 1000px;
+        border: 1px solid $black;
+        color: $black;
+        position: relative;
+        top:0;
+        left: 0;
+        overflow: hidden;
+        gap: 24px;
+        transition: color 0.3s ease-in-out;
+        @include mixins.flex(row, center, center);
+
+        @media (max-width: 700px) {
+            height: 50px;
+            padding: 0 20px;
+            gap: 12px;
+        }
+    
+        .place-item-bg {
+            width: 102%;
+            height: 300px;
+            background-color: $black;
+            border-radius: 287px;
+            position: absolute;
+            left: -1%;
+            top: 100%;
+            transform: translateY(0);
+            transition: transform 0.4s ease-in-out;
+        }
+    
+        .place-item-number {
+            position: relative;
+            z-index: 2;
+            @include mixins.font(Inter, 14px, normal, 400, 150%);
+
+            @media (max-width: 700px) {
+                @include mixins.font(Inter, 12px, normal, 400, 150%);
+            }
+        }
+    
+        .place-item-text {
+            text-transform: uppercase;
+            position: relative;
+            z-index: 2;
+            @include mixins.font(Inter, 38px, normal, 400, 100%);
+
+            @media (max-width: 700px) {
+                @include mixins.font(Inter, 18px, normal, 400, 150%);
+            }
+        }
+    }
+
+
+    // Photos Styles
+
+    .place-item-photo-container {
+        position: absolute;
+        top: 0;
+        z-index: 3;
+        width: 50%;
+        height: 100%;
+        opacity: 1;
+        @include mixins.flex(row, center, center);
+
+        .place-item-photo-container-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+
+            @media (max-width: 850px) {
+                overflow: hidden;
+            }
+
+            .hover-reveal {
+                width: 250px;
+                height: 300px;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                transform: translate(-50%, -50%);
+                opacity: 0;
+                pointer-events: none;
+                overflow: hidden;
+
+                .hover-reveal-inner {
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+                    overflow: hidden;
+                    transform-origin: 50% 100%;
+                    pointer-events: none;
+
+                    img {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        z-index: 99;
+                        transform-origin: 50% 100%;
+                        pointer-events: none;
+                    }
+                }
+            }
+        }
+
+        .place-item-photo-container-inner.first {
+            border-radius: 287px 0 0 287px;
+        }
+
+        .place-item-photo-container-inner.second {
+            border-radius: 0 287px 287px 0;
+        }
+    }
+
+    .place-item-photo-container.first {
+        left: 0;
+    }
+    
+    .place-item-photo-container.second {
+        right: 0;
+    }
+    
+}
+
+.place-item-wrapper:hover .place-item {
+    color: $white;
+
+    @media (max-width: 850px) {
+        color: $black;
+    }
+}
